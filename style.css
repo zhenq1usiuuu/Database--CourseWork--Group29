@@ -416,3 +416,78 @@ input[type="submit"].btn-delete-confirm {
 input[type="submit"].btn-delete-confirm:hover {
     background-color: #b32a20;
 }
+
+.hero-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 60px 40px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 51, 102, 0.12);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.brand-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px; 
+}
+
+.brand-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #003366;
+    color: white;
+    font-size: 2.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 51, 102, 0.2);
+    margin-right: 12px; 
+}
+
+.brand-text {
+    font-size: 2.4rem;
+    color: #003366;
+    font-weight: 800;
+    letter-spacing: -0.5px; 
+}
+.tagline {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 45px;
+    line-height: 1.6;
+}
+
+.start-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-action {
+    font-size: 1.2rem;
+    padding: 16px !important;
+}
+
+.secondary-action {
+    padding: 12px !important;
+    font-size: 1rem;
+}
+
+.hero-footer {
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.hero-footer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #999;
+}
