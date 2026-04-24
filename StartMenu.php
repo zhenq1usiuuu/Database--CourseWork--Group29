@@ -20,6 +20,7 @@
         <div class="start-actions">
             <a href="Login.php" class="btn-primary main-action">Login</a>
             <a href="Signup.php" class="btn-outline secondary-action">Admin Signup</a>
+            <a href="Request.php" class="btn-outline secondary-action">Request Account For Assessors</a>
         </div>
 
         <div class="hero-footer">

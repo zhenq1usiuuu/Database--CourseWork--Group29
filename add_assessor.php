@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($name) || empty($username) || empty($password) || empty($role)) {
         $message = "<div class='message error'>All fields are required.</div>";
     } else {
-        $result = createAdmin($name, $username, $password, $role);
+        $result = createUser($name, $username, $password, $role);
         if ($result) {
             $message = "<div class='message success'>Assessor added successfully.</div>";
         } else {

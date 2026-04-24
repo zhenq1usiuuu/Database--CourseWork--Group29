@@ -40,5 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="submit" name="submit" value="Login">
     </form>
     <p>Don't have an Admin account? <a href="Signup.php">Signup For Admin</a>.</p>
+    <p>Need an Assessor account? <a href="Request.php">Request Account For Assessors</a>.</p>
 </body>
 </html>

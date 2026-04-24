@@ -7,7 +7,7 @@ include 'functions.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assessor Management</title>
+    <title>Assessor Requests</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,9 +15,8 @@ include 'functions.php';
     
     <div class="table-card">
         <div class="card-header">
-            <h2>List of Assessors</h2>
-            <a href="add_assessor.php" class="btn-primary">Add New Assessor</a>
-            <a href="AssessorRequests.php" class="btn-outline">Assessors Requests</a>
+            <h2>List of Requesting Assessors</h2>
+            
         </div>
         
         <table class="data-table">
@@ -33,7 +32,7 @@ include 'functions.php';
             </thead>
             <tbody>
             <?php
-            $result = getAssessors();
+            $result = getAssessorRequests();
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
@@ -43,20 +42,20 @@ include 'functions.php';
                     echo "<td>" . htmlspecialchars($row['Password']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['Role']) . "</td>";
                     echo "<td class='action-links'>
-                            <a href='update_assessor.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-edit'>Update</a>
-                            <a href='delete_assessor.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-danger' onclick='return confirm(\"Are you sure you want to delete this assessor?\")'>Delete</a>
+                            <a href='accept_assessor.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-edit'>Accept</a>
+                            <a href='refuse_assessor.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-danger' onclick='return confirm(\"Are you sure you want to refuse this assessor request?\")'>Refuse</a>
                           </td>";
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='6' class='text-center'>No assessors found.</td></tr>";
+                echo "<tr><td colspan='6' class='text-center'>No assessor requests found.</td></tr>";
             }
             ?>
             </tbody>
         </table>
         
         <div class="card-footer">
-            <a href="AdminMenu.php" class="btn-outline">Back to Admin Menu</a>
+            <a href="AssessorManagement.php" class="btn-outline">Go Back</a>
         </div>
     </div>
 </body>

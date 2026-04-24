@@ -36,7 +36,6 @@ include 'functions.php';
                     echo "<td>" . htmlspecialchars($row['ID']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['Name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['Programme']) . "</td>";
-                    // 为操作按钮包裹一个 flex 容器，使其对齐更整齐
                     echo "<td class='action-links'>
                             <a href='update_student.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-edit'>Update</a>
                             <a href='delete_student.php?id=" . htmlspecialchars($row['ID']) . "' class='btn-small btn-danger' onclick='return confirm(\"Are you sure you want to delete this student?\")'>Delete</a>

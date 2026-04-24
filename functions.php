@@ -15,11 +15,7 @@ $stmt->get_result();
 $stmt->close();
 return $result;
 }
-function createAdmin($name, $username, $password, $role) {
-$sql = "INSERT INTO user (name, username, password, role) VALUES(?, ?, ?, ?)";
-$params = [$name, $username, $password, $role];
-return executePreparedStatement($sql, $params);
-}
+
 function createUser($name, $username, $password, $role) {
 $sql = "INSERT INTO user (name, username, password, role) VALUES(?, ?, ?, ?)";
 $params = [$name, $username, $password, $role];
@@ -102,6 +98,21 @@ function correctLogin($inusername, $inpassword, $inrole) {
             window.history.back();
         </script>";
     }
+}
+function getAssessorRequests() {
+$sql = "SELECT * FROM User WHERE Role LIKE 'Request: %'";
+return executePreparedStatement($sql, []);
+}
+function acceptAssessor($id, $role) {
+if ($role == 'Request: University Assessor') {
+$sql = "UPDATE User SET Role = 'University Assessor' WHERE ID = ?";
+$params = [$id];
+return executePreparedStatement($sql, $params);
+} else{
+$sql = "UPDATE User SET Role = 'Company Assessor' WHERE ID = ?";
+$params = [$id];
+return executePreparedStatement($sql, $params);
+}
 }
 ?>
 
