@@ -114,6 +114,27 @@ $params = [$id];
 return executePreparedStatement($sql, $params);
 }
 }
+function getAllAssessors() {
+    
+    $sql = "SELECT ID, Name, Username, Role FROM User WHERE Role IN ('University Assessor', 'Company Assessor')";
+    $result = executePreparedStatement($sql, []);
+    
+    $assessors = [];
+    while ($row = $result->fetch_assoc()) {
+        $assessors[] = $row;
+    }
+    return $assessors;
+}
+function getAllStudents(){
+    $sql = "SELECT ID, Name, Programme FROM Student";
+    $result = executePreparedStatement($sql, []);
+    
+    $students = [];
+    while ($row = $result->fetch_assoc()) {
+        $students[] = $row;
+    }
+    return $students;
+}
 ?>
 
 

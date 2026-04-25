@@ -16,6 +16,7 @@ include 'functions.php';
     <div class="table-card">
         <div class="card-header">
             <h2>List of Students</h2>
+            <a href="SearchStudents.php" class="btn btn-primary">Search Students</a>
             <a href="add_student.php" class="btn btn-primary">Add New Student</a>
         </div>
         

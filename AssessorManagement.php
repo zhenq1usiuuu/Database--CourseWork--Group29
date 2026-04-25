@@ -16,6 +16,7 @@ include 'functions.php';
     <div class="table-card">
         <div class="card-header">
             <h2>List of Assessors</h2>
+            <a href="SearchAssessors.php" class="btn-primary">Search Assessors</a>
             <a href="add_assessor.php" class="btn-primary">Add New Assessor</a>
             <a href="AssessorRequests.php" class="btn-outline">Assessors Requests</a>
         </div>
