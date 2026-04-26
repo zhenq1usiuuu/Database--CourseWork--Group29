@@ -18,10 +18,54 @@ $all_assessors = getAllAssessors();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Assessors</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #f8f9fa;
+            color: #16325c;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #16325c;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background-color: #16325c;
+            color: white;
+            transform: translateX(-5px);
+        }
+        .results-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            width: 100%;
+        }
+        .result-card {
+            flex: 0 1 calc(50% - 20px);
+            min-width: 320px;
+            box-sizing: border-box;
+        }
+        .message.error {
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .result-card {
+                flex: 0 1 100%;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>E-Internship</h1>
-    <h2>Search Assessors</h2>
+    <h2 style="text-align: center;">Search Assessors</h2>
+
+    <a href="AdminMenu.php" class="btn-back">← Go Back to Admin Menu</a>
 
     <div class="search-card">
         <form id="search-form"> 
@@ -43,12 +87,10 @@ $all_assessors = getAllAssessors();
             
             <button type="submit" id="submit-btn" class="btn-primary" style="margin-top: 25px; width: 100%;">Search</button>
         </form>
-    </div><br><br>
-    <a href="AssessorManagement.php" class="btn-outline">Go Back</a>
-
+    </div>
 
     <section id="results-section"> 
-        <h2>Search Results</h2> 
+        <h2 style="text-align: center;">Search Results</h2> 
         <div id="results-container" class="results-grid"></div>
     </section>
 
