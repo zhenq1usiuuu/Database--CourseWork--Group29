@@ -41,24 +41,26 @@ $all_assessors = getAllAssessors();
                 <option value="Company Assessor">Company Assessor</option>
             </select>
             
-            <button type="submit" id="submit-btn" class="btn-primary" style="margin-top: 25px; width: 100%;">Search</button> 
+            <button type="submit" id="submit-btn" class="btn-primary" style="margin-top: 25px; width: 100%;">Search</button>
         </form>
-    </div>
+    </div><br><br>
+    <a href="AssessorManagement.php" class="btn-outline">Go Back</a>
 
-    <div id="assessor-list" class="results-container"></div>
 
-    <div style="margin-top: 25px; margin-bottom: 50px;">
-        <a href="AssessorManagement.php" class="btn-outline">Back to AssessorManagement</a>
-    </div>
+    <section id="results-section"> 
+        <h2>Search Results</h2> 
+        <div id="results-container" class="results-grid"></div>
+    </section>
 
     <script>
         const assessors = <?php echo json_encode($all_assessors); ?>;
+        
         const form = document.querySelector('#search-form');
         const idInput = document.querySelector('#id');
         const nameInput = document.querySelector('#name');
         const usernameInput = document.querySelector('#username');
         const roleInput = document.querySelector('#role');
-        const resultsContainer = document.querySelector('#assessor-list');
+        const resultsContainer = document.querySelector('#results-container');
 
         function filterAssessors(id, name, username, role) {
             return assessors.filter(assessor => {
@@ -82,33 +84,38 @@ $all_assessors = getAllAssessors();
             resultsContainer.innerHTML = '';
 
             if (filtered.length === 0) {
-    resultsContainer.innerHTML = '<div class="message error">No matching assessors found.</div>';
-    return;
-}
+                resultsContainer.innerHTML = '<div class="message error">No matching assessors found.</div>';
+                return;
+            }
 
             filtered.forEach(item => {
-    const card = document.createElement('div');
-   
-    card.className = 'result-card'; 
-    card.innerHTML = `
-        <div class="res-header">
-            <span class="res-role-tag ${item.Role === 'University Assessor' ? 'role-uni' : 'role-comp'}">${item.Role}</span>
-            <h3 class="res-name">${item.Name}</h3>
-        </div>
-        <div class="res-body">
-            <div class="res-info-item">
-                <span class="label">Assessor ID:</span>
-                <span class="value">${item.ID}</span>
-            </div>
-            <div class="res-info-item">
-                <span class="label">Username:</span>
-                <span class="value">${item.Username}</span>
-            </div>
-        </div>
-    `;
-    resultsContainer.appendChild(card);
-});
+                const card = document.createElement('div');
+                card.className = 'result-card'; 
+                card.innerHTML = `
+                    <div class="res-header">
+                        <span class="res-role-tag ${item.Role === 'University Assessor' ? 'role-uni' : 'role-comp'}">${item.Role}</span>
+                        <h3 class="res-name">${item.Name}</h3>
+                    </div>
+                    <div class="res-body">
+                        <div class="res-info-item">
+                            <span class="label">Assessor ID:</span>
+                            <span class="value">${item.ID}</span>
+                        </div>
+                        <div class="res-info-item">
+                            <span class="label">Username:</span>
+                            <span class="value">${item.Username}</span>
+                        </div>
+                    </div>
+                    <div class="res-actions" style="margin-top: 20px; display: flex; gap: 10px; border-top: 1px solid #eee; padding-top: 15px;">
+                        <a href="update_assessor.php?id=${item.ID}" class="btn-edit" style="background-color: #4CAF50; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 0.9em; flex: 1; text-align: center;">Update</a>
+                        <a href="delete_assessor.php?id=${item.ID}" class="btn-delete" style="background-color: #f44336; color: white; padding: 8px 15px; text-decoration: none; border-radius: 4px; font-size: 0.9em; flex: 1; text-align: center;">Delete</a>
+                    </div>
+                `;
+                resultsContainer.appendChild(card);
+            });
         });
+
+        form.dispatchEvent(new Event('submit'));
     </script>
 </body>
 </html>

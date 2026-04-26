@@ -1,3 +1,11 @@
+
+<?php
+session_start();
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'Admin') {
+    header("Location: Login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
