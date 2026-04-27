@@ -70,33 +70,29 @@ $params = [$username];
 return executePreparedStatement($sql, $params);
 }
 
-function correctLogin($inusername, $inpassword, $inrole) {
-    $result = getUserByUsername($inusername);
+function correctLogin($username, $password, $role) {
+    $sql = "SELECT ID, Name, Role FROM user WHERE Username = ? AND Password = ? AND Role = ?";
+    $params = [$username, $password, $role];
+    $result = executePreparedStatement($sql, $params);
 
-    if ($result && $result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        
-        if ($inpassword == $row['Password'] && $inrole == $row['Role']) {
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['user_role'] = $row['Role'];
-            $_SESSION['user_name'] = $row['Name'];
+    if ($result->num_rows === 1) {
+        $user = $result->fetch_assoc();
+        $_SESSION['user_id'] = $user['ID'];
+        $_SESSION['user_role'] = $user['Role'];
+        $name = $user['Name'];
 
-            echo "<script>
-                alert('Login Successful! Welcome, " . $row['Name'] . "');
-                window.location.href = '" . ($row['Role'] == 'Admin' ? 'AdminMenu.php' : 'AssessorMenu.php') . "';
-            </script>";
-            exit();
-        } else {
-            echo "<script>
-                alert('Error: Invalid Username, Password, or Role');
-                window.history.back();
-            </script>";
-        }
+        $redirect_page = ($user['Role'] === 'Admin') ? "AdminMenu.php" : "AssessorMenu.php";
+
+        echo "<script>
+                alert('Login Successful! Welcome, " . $name . "');
+                window.location.href = '" . $redirect_page . "';
+              </script>";
+        exit();
     } else {
         echo "<script>
-            alert('Error: User not found');
-            window.history.back();
-        </script>";
+                alert('Error: Invalid Username, Password, or Role');
+                window.history.back();
+              </script>";
     }
 }
 function getAssessorRequests() {

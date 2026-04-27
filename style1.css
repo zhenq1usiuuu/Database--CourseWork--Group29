@@ -1,0 +1,54 @@
+body {
+    text-align: center;
+    font-family: Arial;
+    background-color: #f4f6f8;
+    margin: 20px;
+}
+
+/* 标题 */
+h2 {
+    color: #333;
+}
+
+/* 表格 */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    background: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #007bff;
+    color:#f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* 按钮 */
+button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* 卡片（如果你用卡片展示） */
+.card {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
